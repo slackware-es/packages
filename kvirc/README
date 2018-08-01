@@ -1,0 +1,5 @@
+KVIrc is a graphical IRC client for Linux, Unix, Mac OS and Windows.
+The name is an acronym of K Visual IRC in which the K stands for 
+a dependency to KDE, which became optional from version 2.0.0. 
+The software is based on the Qt framework and its code is released 
+under a modified GNU General Public License.

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+       |-----handy-ruler------------------------------------------------------|
+kvirc: kvirc (Qt Internet Relay Chat client)
+kvirc:
+kvirc: The name is an acronym of K Visual IRC in which the K stands for 
+kvirc: a dependency to KDE, which became optional from version 2.0.0. 
+kvirc: The software is based on the Qt framework and its code is released 
+kvirc: under a modified GNU General Public License.
+kvirc:
+kvirc:
+kvirc:
+kvirc:
+kvirc:
