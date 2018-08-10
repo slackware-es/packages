@@ -61,7 +61,15 @@ cd opt/jicofo
 unzip $TMP/$PRGNAM/target/jicofo-linux-x64-1.1-SNAPSHOT.zip
 mv jicofo-linux-x64-1.1-SNAPSHOT/* .
 rmdir jicofo-linux-x64-1.1-SNAPSHOT
+find . -name *.so -exec chmod 755 {} \;
 
+cd $PKG
+mkdir -p etc/jitsi/jicofo
+mkdir -p etc/rc.d
+mkdir -p var/log/jitsi/
+
+cp $CWD/config/* etc/jitsi/jicofo
+cp $CWD/rc.jicofo etc/rc.d
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc

@@ -1,0 +1,63 @@
+#!/bin/sh
+# Start/stop/restart the jitsi jicofo component server:
+# See https://github.com/jitsi/jitsi-meet/blob/master/doc/manual-install.md
+
+set -a
+
+if [ -f /etc/jitsi/jicofo/config ]; then
+    . /etc/jitsi/jicofo/config
+fi
+
+# Assign default host if not configured
+if [ ! $JICOFO_HOST ]; then
+    JICOFO_HOST=localhost
+fi
+
+NAME="jicofo"
+DAEMON_OPTS=" --host=$JICOFO_HOST --domain=$JICOFO_HOSTNAME --port=$JICOFO_PORT --secret=$JICOFO_SECRET --user_name=$JICOFO_AUTH_USER --user_domain=$JICOFO_AUTH_DOMAIN --user_password=$JICOFO_AUTH_PASSWORD $JICOFO_OPTS"
+PIDFILE=/var/run/jicofo.pid
+LOGFILE=/var/log/jitsi/jicofo.log
+DAEMON=/opt/jicofo/jicofo.sh
+
+
+jicofo_start() {
+    ulimit -n 8192
+    export JAVA_HOME=/usr/lib64/java
+    export PATH=$PATH:/usr/lib64/java/bin
+    JAVA_SYS_PROPS="$JAVA_SYS_PROPS" nohup $DAEMON $DAEMON_OPTS < /dev/null >> $LOGFILE 2>&1 &
+    echo $! > $PIDFILE
+}
+
+jicofo_stop() {
+    if [ -f $PIDFILE ]; then
+        PID=$(cat $PIDFILE)
+    fi
+    echo -n "Stopping $NAME: "
+    if [ $PID ]; then
+        kill $PID || true
+        rm $PIDFILE || true
+        echo "$NAME stopped."
+    else
+        echo "$NAME doesn't seem to be running."
+    fi
+}
+
+jicofo_restart() {
+  jicofo_stop
+  jicofo_start
+}
+
+case "$1" in
+'start')
+  jicofo_start
+  ;;
+'stop')
+  jicofo_stop
+  ;;
+'restart')
+  jicofo_restart
+  ;;
+*)
+  echo "usage $0 start|stop|restart"
+esac
+
