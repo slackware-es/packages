@@ -1,0 +1,43 @@
+#!/bin/sh
+# Start/stop/restart the caddy web server:
+# See https://caddyserver.com/docs/cli for caddy usage
+
+set -a
+
+CADDYFILE="/etc/caddy/Caddyfile"
+LOGFILE="/var/log/caddy/error.log"
+PIDFILE="/var/run/caddy.pid"
+
+# Source options
+if [ ! -r $CADDYFILE ]; then
+    echo "Please generate /etc/caddy/Caddyfile first!"
+    exit -2
+fi
+
+caddy_start() {
+    ulimit -n 8192
+    nohup caddy -conf $CADDYFILE  >> $LOGFILE &
+    echo $! > $PIDFILE
+}
+
+caddy_stop() {
+    pkill -INT  caddy
+}
+
+caddy_restart() {
+    pkill -USR1 caddy
+}
+
+case "$1" in
+'start')
+  caddy_start
+  ;;
+'stop')
+  caddy_stop
+  ;;
+'restart')
+  caddy_restart
+  ;;
+*)
+  echo "usage $0 start|stop|restart"
+esac
