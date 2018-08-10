@@ -19,10 +19,6 @@ TMP=${TMP:-/tmp/es}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
-
-# Compute compiler flags based on the
-
-
 # Enable exit on error to stop the build process as soon as an 
 # error appears
 
@@ -61,7 +57,15 @@ cd opt/jitsi-videobridge
 unzip $TMP/$PRGNAM/target/$PRGNAM-$ARCH-$VERSION-SNAPSHOT.zip
 mv $PRGNAM-$ARCH-$VERSION-SNAPSHOT/* .
 rmdir $PRGNAM-$ARCH-$VERSION-SNAPSHOT
+find . -name *.so -exec chmod 755 {} \;
 
+cd $PKG
+mkdir -p etc/jitsi/videobridge
+mkdir -p etc/rc.d
+mkdir -p var/log/jitsi/
+
+cp $CWD/config/* etc/jitsi/videobridge
+cp $CWD/rc.videobridge etc/rc.d
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc

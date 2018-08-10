@@ -7,7 +7,6 @@
 
        |-----handy-ruler------------------------------------------------------|
 jitsi-videobridge: jitsi-videobridge 
-jitsi-videobridge:
 jitsi-videobridge:  
 jitsi-videobridge: Jitsi Videobridge is an XMPP server component that allows 
 jitsi-videobridge: for multiuser video communication. Unlike the expensive 
@@ -18,6 +17,3 @@ jitsi-videobridge: participants. Therefore, while it does need to run on a
 jitsi-videobridge: server with good network bandwidth, CPU horsepower is not
 jitsi-videobridge: that critical for performance.
 jitsi-videobridge:  
-jitsi-videobridge:
-jitsi-videobridge:
-jitsi-videobridge:

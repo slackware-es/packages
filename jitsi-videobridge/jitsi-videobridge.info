@@ -7,6 +7,7 @@ DOWNLOAD="https://github.com/jitsi/jitsi-videobridge.git"
 MD5SUM=""
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
+REQUIRES="jre8"
 MAINTAINER="Gabriel Diaz"
 EMAIL="gdiaz@slackware.es"
 
