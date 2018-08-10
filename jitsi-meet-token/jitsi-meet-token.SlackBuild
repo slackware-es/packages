@@ -1,0 +1,63 @@
+#!/bin/sh
+# Slackware build script
+
+# Written by Gabriel Diaz <gdiaz@slackware.es>
+
+CWD=$(pwd)
+
+# Load package information
+source $CWD/*.info
+
+# Set basic package metadata
+
+BUILD=${BUILD:-1}
+TAG=${TAG:-_es}
+
+# Set working directories
+
+TMP=${TMP:-/tmp/es}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+
+# Compute compiler flags based on the
+
+
+# Enable exit on error to stop the build process as soon as an 
+# error appears
+
+set -e
+
+# Clean old working directories
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $PRGNAM
+
+# Clone the program repository and checkout desired version
+
+git clone $DOWNLOAD $PRGNAM
+cd $PRGNAM
+
+# Fix permisions of source tree
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \; -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+# Configure and build
+
+cd $PKG
+mkdir -p opt/jitsi-meet-token
+cd opt/jitsi-meet-token
+cp -Rf $TMP/$PRGNAM/resources/prosody-plugins/* .
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+
