@@ -56,8 +56,8 @@ make source-package
 cd $PKG
 mkdir opt
 cd opt
-tar jxf TMP/$PRGNAM/$PRGNAM.tar.bz2
-
+tar jxf $TMP/$PRGNAM/$PRGNAM.tar.bz2
+mkdir -p $PKG/etc/jitsi/meet
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
