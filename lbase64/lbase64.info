@@ -1,0 +1,11 @@
+PRGNAM="lbase64"
+VERSION="5.1"
+HOMEPAGE="https://webserver2.tecgraf.puc-rio.br/~lhf/ftp/lua/#lbase64"
+DOWNLOAD="https://webserver2.tecgraf.puc-rio.br/~lhf/ftp/lua/5.1/lbase64.tar.gz"
+MD5SUM="4834045fe79facef524990e968783dab"
+DOWNLOAD_x86_64=""
+MD5SUM_x86_64=""
+REQUIRES="lua"
+MAINTAINER="Gabriel Diaz"
+EMAIL="gdiaz@slackware.es"
+
