@@ -1,0 +1,12 @@
+PRGNAM="postgrest"
+VERSION="master"
+GITTAG="master"
+HOMEPAGE="https://postgrest.org"
+DOWNLOAD="https://github.com/PostgREST/postgrest.git"
+MD5SUM=""
+DOWNLOAD_x86_64=""
+MD5SUM_x86_64=""
+REQUIRES="ghc"
+MAINTAINER="Gabriel Diaz"
+EMAIL="gdiaz@slackware.es"
+
