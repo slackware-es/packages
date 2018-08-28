@@ -1,5 +1,6 @@
 PRGNAM="kvirc"
-VERSION="5.0.0-beta1"
+VERSION="5.0.0"
+GITTAG="master"
 HOMEPAGE="http://kvirc.net/"
 DOWNLOAD="https://github.com/kvirc/kvirc.git"
 MD5SUM=""
