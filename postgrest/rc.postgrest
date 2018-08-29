@@ -1,0 +1,44 @@
+#!/bin/sh
+# Start/stop/restart the postgrest web server:
+# See https://postgrest.org for postgrest usage
+
+set -a
+
+CONFFILE="/opt/postgrest/etc/postgrest.conf"
+LOGFILE="/var/log/postgrest/error.log"
+PIDFILE="/var/run/postgrest.pid"
+
+# Source options
+if [ ! -r $CONFFILE ]; then
+    echo "Please generate /opt/postgrest/etc/postgrest.conf first!"
+    exit -2
+fi
+
+postgrest_start() {
+    ulimit -n 8192
+    nohup /opt/postgrest/bin/postgrest $CONFFILE  >> $LOGFILE &
+    echo $! > $PIDFILE
+}
+
+postgrest_stop() {
+    pkill -INT  postgrest
+}
+
+postgrest_restart() {
+    pkill -USR1 postgrest
+}
+
+case "$1" in
+'start')
+  postgrest_start
+  ;;
+'stop')
+  postgrest_stop
+  ;;
+'restart')
+  postgrest_restart
+  ;;
+*)
+  echo "usage $0 start|stop|restart"
+esac
+
