@@ -1,6 +1,6 @@
 PRGNAM="jitsi-videobridge"
 VERSION="1.1"
-GITTAG="stable/jitsi-meet_3229"
+GITTAG="jitsi-meet_3566"
 ARCH="linux-x64"
 HOMEPAGE="http://jitsi.org/"
 DOWNLOAD="https://github.com/jitsi/jitsi-videobridge.git"

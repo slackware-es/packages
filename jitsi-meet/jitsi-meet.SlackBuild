@@ -39,6 +39,7 @@ rm -rf $PRGNAM
 
 git clone $DOWNLOAD $PRGNAM
 cd $PRGNAM
+git checkout tags/$GITTAG
 
 # Fix permisions of source tree
 chown -R root:root .

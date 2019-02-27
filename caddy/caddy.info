@@ -1,6 +1,6 @@
 PRGNAM="caddy"
 VERSION="0.11"
-GITTAG="v0.11.0"
+GITTAG="v0.11.4"
 HOMEPAGE="https://caddyserver.com"
 DOWNLOAD="https://github.com/mholt/caddy.git"
 ARCH="x86_64"

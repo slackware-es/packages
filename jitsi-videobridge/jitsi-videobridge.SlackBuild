@@ -49,7 +49,7 @@ find -L . \
 n=$(cat /proc/cpuinfo | grep processor | wc -l)
 
 mvn -T $n compile 
-mvn package  -Dassembly.skipAssembly=false
+mvn package  -Dassembly.skipAssembly=false -Dmaven.test.skip=true
 cd $PKG
 mkdir -p opt/jitsi-videobridge
 cd opt/jitsi-videobridge

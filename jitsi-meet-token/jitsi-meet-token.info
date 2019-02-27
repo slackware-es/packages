@@ -1,5 +1,6 @@
 PRGNAM="jitsi-meet-token"
 VERSION="1.1"
+GITTAG="jitsi-meet_3566"
 ARCH="x86_64"
 HOMEPAGE="http://jitsi.org/"
 DOWNLOAD="https://github.com/jitsi/jitsi-meet.git"
